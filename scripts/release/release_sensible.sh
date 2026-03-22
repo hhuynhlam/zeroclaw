@@ -69,11 +69,8 @@ docker build -t "$BUILD_IMAGE" -f - "$REPO_ROOT" <<'DOCKERFILE'
 FROM rust:1.92-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ca-certificates pkg-config libssl-dev git perl \
-  && rm -rf /var/lib/apt/lists/*
-
-# Install Node for web dashboard build
-RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
+    ca-certificates pkg-config libssl-dev git perl curl \
+  && curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
   && apt-get install -y --no-install-recommends nodejs \
   && rm -rf /var/lib/apt/lists/*
 
