@@ -89,9 +89,9 @@ docker run --rm \
     echo '--- Building web dashboard ---'
     cd web && npm ci && npm run build && cd ..
     echo '--- Building zeroclaw binary ---'
-    cargo build --release --locked --features '$CARGO_FEATURES' --target x86_64-unknown-linux-gnu
+    cargo build --release --locked --features '$CARGO_FEATURES'
     echo '--- Packaging ---'
-    cd target/x86_64-unknown-linux-gnu/release
+    cd target/release
     tar czf /src/target/release-sensible/$ARTIFACT zeroclaw
     echo '--- Done ---'
   "
